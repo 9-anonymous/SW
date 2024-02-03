@@ -1,0 +1,60 @@
+#Navbar{
+    z-index: 10;
+    background-color: black;
+    height: 70px;
+    border: solid 1px #98c1d9;
+    border-radius: 20px;
+    font-size: 14px;
+    width: 60%;
+    margin: auto;
+    margin-top: 10px;
+}
+.Centring{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+input{
+    background-color: transparent;
+    border: 1px double #98c1d9;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    position: relative;
+    top: 4px;
+    height: 40px;
+    margin: 0px 30px;
+}
+i{font-size: 20px; margin: auto;}
+
+#imgLink{
+    padding: 0px 10px;
+    position: relative;
+    top: 4px;    
+}
+#imgLink:hover{
+    background-color: transparent;
+}
+
+a{
+    width: auto;
+    text-decoration: none; 
+    color: #98c1d9;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+a:hover{
+    background-color: #98c1d9;
+    color: black;
+    border: none;
+    border-radius: 10px;
+}
+ 
+.links{
+    display: flex;
+    text-align: center;
+    width: 45%;
+    justify-content: space-around;
+    align-items: center; 
+}
