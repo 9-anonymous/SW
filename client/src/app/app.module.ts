@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +11,8 @@ import { FooterComponent } from './MainPage/footer/footer.component';
 import { RecommandationComponent } from './MainPage/recommandation/recommandation.component';
 import { WelcomePageComponent } from './MainPage/welcome-page/welcome-page.component';
 import { BenefitsComponent } from './MainPage/benefits/benefits.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +22,14 @@ import { BenefitsComponent } from './MainPage/benefits/benefits.component';
     FooterComponent,
     RecommandationComponent,
     WelcomePageComponent,
-    BenefitsComponent
+    BenefitsComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
