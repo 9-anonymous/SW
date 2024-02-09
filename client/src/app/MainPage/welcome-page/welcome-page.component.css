@@ -1,37 +1,68 @@
-zh1{
-    padding: 30px 50px 0px 50px;
-    color: #98c1d9;
+.welcome-container{
+    height: 890px;
 }
-p{
-    margin: 0px 20px;
-}
-
-#title{
+#title {
     position: absolute;
     display: flex;
     justify-content: space-around;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     text-align: center;
-    margin: 300px 550px;
-    padding: 50px 50px 50px 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 15% auto; /* Center vertically */
+    padding: 5% 5%;
     border-radius: 40px;
     border: 2px double #98c1d9;
     outline: 5px solid black;
 }
 
-video{
+#title img {
+    width: 100%; /* Make the image responsive */
+    max-height: 200px; /* Set maximum height */
+    height: auto; /* Maintain aspect ratio */
+}
+video {
     position: absolute;
     z-index: -2;
-    top: -90px;
-    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
 }
 
-#Deg{
+#Deg {
     position: relative;
-    top: -80px;
+    top: 0;
     z-index: -1;
     width: 100%;
-    height: 990px;
-    background-color: rgba(00 , 00, 00, 0.2);
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+zh1 {
+    padding: 5% 10%;
+    color: #98c1d9;
+}
+
+p {
+    margin: 0 5%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #title {
+        margin: 13% auto;
+        padding: 5% 5%;
+    }
+
+    zh1 {
+        padding: 5% 10%;
+        font-size: 1.5em;
+    }
+
+    p {
+        margin: 0 5%;
+        font-size: 0.8em;
+    }
 }
