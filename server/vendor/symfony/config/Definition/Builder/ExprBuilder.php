@@ -26,11 +26,11 @@ class ExprBuilder
     public const TYPE_NULL = 'null';
     public const TYPE_ARRAY = 'array';
 
-    public string $allowedTypes;
-    public ?\Closure $ifPart = null;
-    public ?\Closure $thenPart = null;
+    protected $node;
 
-    protected NodeDefinition $node;
+    public $allowedTypes;
+    public $ifPart;
+    public $thenPart;
 
     public function __construct(NodeDefinition $node)
     {

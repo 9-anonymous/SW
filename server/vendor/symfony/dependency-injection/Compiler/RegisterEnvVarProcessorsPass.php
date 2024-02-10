@@ -27,7 +27,10 @@ class RegisterEnvVarProcessorsPass implements CompilerPassInterface
 {
     private const ALLOWED_TYPES = ['array', 'bool', 'float', 'int', 'string', \BackedEnum::class];
 
-    public function process(ContainerBuilder $container): void
+    /**
+     * @return void
+     */
+    public function process(ContainerBuilder $container)
     {
         $bag = $container->getParameterBag();
         $types = [];

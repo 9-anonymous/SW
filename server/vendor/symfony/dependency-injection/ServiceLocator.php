@@ -60,7 +60,10 @@ class ServiceLocator implements ServiceProviderInterface, \Countable
         }
     }
 
-    public function __invoke(string $id): mixed
+    /**
+     * @return mixed
+     */
+    public function __invoke(string $id)
     {
         return isset($this->factories[$id]) ? $this->get($id) : null;
     }

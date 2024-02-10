@@ -22,7 +22,10 @@ class InvalidConfigurationException extends Exception
     private ?string $path = null;
     private bool $containsHints = false;
 
-    public function setPath(string $path): void
+    /**
+     * @return void
+     */
+    public function setPath(string $path)
     {
         $this->path = $path;
     }
@@ -34,8 +37,10 @@ class InvalidConfigurationException extends Exception
 
     /**
      * Adds extra information that is suffixed to the original exception message.
+     *
+     * @return void
      */
-    public function addHint(string $hint): void
+    public function addHint(string $hint)
     {
         if (!$this->containsHints) {
             $this->message .= "\nHint: ".$hint;

@@ -23,11 +23,14 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
  */
 class VariableNode extends BaseNode implements PrototypeNodeInterface
 {
-    protected bool $defaultValueSet = false;
-    protected mixed $defaultValue = null;
-    protected bool $allowEmptyValue = true;
+    protected $defaultValueSet = false;
+    protected $defaultValue;
+    protected $allowEmptyValue = true;
 
-    public function setDefaultValue(mixed $value): void
+    /**
+     * @return void
+     */
+    public function setDefaultValue(mixed $value)
     {
         $this->defaultValueSet = true;
         $this->defaultValue = $value;
@@ -49,18 +52,26 @@ class VariableNode extends BaseNode implements PrototypeNodeInterface
      * Sets if this node is allowed to have an empty value.
      *
      * @param bool $boolean True if this entity will accept empty values
+     *
+     * @return void
      */
-    public function setAllowEmptyValue(bool $boolean): void
+    public function setAllowEmptyValue(bool $boolean)
     {
         $this->allowEmptyValue = $boolean;
     }
 
-    public function setName(string $name): void
+    /**
+     * @return void
+     */
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    protected function validateType(mixed $value): void
+    /**
+     * @return void
+     */
+    protected function validateType(mixed $value)
     {
     }
 

@@ -15,6 +15,7 @@ use Symfony\Component\Config\Resource\ClassExistenceResource;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\Attribute\AutowireCallable;
 use Symfony\Component\DependencyInjection\Attribute\AutowireDecorated;
+use Symfony\Component\DependencyInjection\Attribute\MapDecorated;
 use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -68,7 +69,10 @@ class AutowirePass extends AbstractRecursivePass
         };
     }
 
-    public function process(ContainerBuilder $container): void
+    /**
+     * @return void
+     */
+    public function process(ContainerBuilder $container)
     {
         $this->defaultArgument->bag = $container->getParameterBag();
 
@@ -94,7 +98,7 @@ class AutowirePass extends AbstractRecursivePass
             return $this->processValue($this->container->getParameterBag()->resolveValue($value->value));
         }
 
-        if ($value instanceof AutowireDecorated) {
+        if ($value instanceof AutowireDecorated || $value instanceof MapDecorated) {
             $definition = $this->container->getDefinition($this->currentId);
 
             return new Reference($definition->innerServiceId ?? $this->currentId.'.inner', $definition->decorationOnInvalid ?? ContainerInterface::NULL_ON_INVALID_REFERENCE);
@@ -351,6 +355,12 @@ class AutowirePass extends AbstractRecursivePass
                 }
 
                 foreach ($parameter->getAttributes(AutowireDecorated::class) as $attribute) {
+                    $arguments[$index] = $this->processValue($attribute->newInstance());
+
+                    continue 2;
+                }
+
+                foreach ($parameter->getAttributes(MapDecorated::class) as $attribute) {
                     $arguments[$index] = $this->processValue($attribute->newInstance());
 
                     continue 2;

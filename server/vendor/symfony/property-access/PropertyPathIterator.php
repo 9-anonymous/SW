@@ -21,7 +21,7 @@ namespace Symfony\Component\PropertyAccess;
  */
 class PropertyPathIterator extends \ArrayIterator implements PropertyPathIteratorInterface
 {
-    protected PropertyPathInterface $path;
+    protected $path;
 
     public function __construct(PropertyPathInterface $path)
     {

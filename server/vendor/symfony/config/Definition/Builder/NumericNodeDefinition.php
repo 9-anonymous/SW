@@ -20,8 +20,8 @@ use Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
  */
 abstract class NumericNodeDefinition extends ScalarNodeDefinition
 {
-    protected int|float|null $min = null;
-    protected int|float|null $max = null;
+    protected $min;
+    protected $max;
 
     /**
      * Ensures that the value is smaller than the given reference.

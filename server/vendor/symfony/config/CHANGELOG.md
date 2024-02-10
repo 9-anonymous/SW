@@ -1,11 +1,6 @@
 CHANGELOG
 =========
 
-7.0
----
-
- * Require explicit argument when calling `NodeBuilder::setParent()`
-
 6.3
 ---
 

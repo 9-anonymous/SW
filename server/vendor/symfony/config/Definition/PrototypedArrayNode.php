@@ -23,12 +23,12 @@ use Symfony\Component\Config\Definition\Exception\UnsetKeyException;
  */
 class PrototypedArrayNode extends ArrayNode
 {
-    protected PrototypeNodeInterface $prototype;
-    protected ?string $keyAttribute = null;
-    protected bool $removeKeyAttribute = false;
-    protected int $minNumberOfElements = 0;
-    protected array $defaultValue = [];
-    protected ?array $defaultChildren = null;
+    protected $prototype;
+    protected $keyAttribute;
+    protected $removeKeyAttribute = false;
+    protected $minNumberOfElements = 0;
+    protected $defaultValue = [];
+    protected $defaultChildren;
     /**
      * @var NodeInterface[] An array of the prototypes of the simplified value children
      */
@@ -37,8 +37,10 @@ class PrototypedArrayNode extends ArrayNode
     /**
      * Sets the minimum number of elements that a prototype based node must
      * contain. By default this is zero, meaning no elements.
+     *
+     * @return void
      */
-    public function setMinNumberOfElements(int $number): void
+    public function setMinNumberOfElements(int $number)
     {
         $this->minNumberOfElements = $number;
     }
@@ -66,8 +68,10 @@ class PrototypedArrayNode extends ArrayNode
      *
      * @param string $attribute The name of the attribute which value is to be used as a key
      * @param bool   $remove    Whether or not to remove the key
+     *
+     * @return void
      */
-    public function setKeyAttribute(string $attribute, bool $remove = true): void
+    public function setKeyAttribute(string $attribute, bool $remove = true)
     {
         $this->keyAttribute = $attribute;
         $this->removeKeyAttribute = $remove;
@@ -83,8 +87,10 @@ class PrototypedArrayNode extends ArrayNode
 
     /**
      * Sets the default value of this node.
+     *
+     * @return void
      */
-    public function setDefaultValue(array $value): void
+    public function setDefaultValue(array $value)
     {
         $this->defaultValue = $value;
     }
@@ -98,8 +104,10 @@ class PrototypedArrayNode extends ArrayNode
      * Adds default children when none are set.
      *
      * @param int|string|array|null $children The number of children|The child name|The children names to be added
+     *
+     * @return void
      */
-    public function setAddChildrenIfNoneSet(int|string|array|null $children = ['defaults']): void
+    public function setAddChildrenIfNoneSet(int|string|array|null $children = ['defaults'])
     {
         if (null === $children) {
             $this->defaultChildren = ['defaults'];
@@ -129,8 +137,10 @@ class PrototypedArrayNode extends ArrayNode
 
     /**
      * Sets the node prototype.
+     *
+     * @return void
      */
-    public function setPrototype(PrototypeNodeInterface $node): void
+    public function setPrototype(PrototypeNodeInterface $node)
     {
         $this->prototype = $node;
     }
@@ -146,9 +156,11 @@ class PrototypedArrayNode extends ArrayNode
     /**
      * Disable adding concrete children for prototyped nodes.
      *
+     * @return never
+     *
      * @throws Exception
      */
-    public function addChild(NodeInterface $node): never
+    public function addChild(NodeInterface $node)
     {
         throw new Exception('A prototyped array node cannot have concrete children.');
     }

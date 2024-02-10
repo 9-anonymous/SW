@@ -20,8 +20,8 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
  */
 class NumericNode extends ScalarNode
 {
-    protected int|float|null $min;
-    protected int|float|null $max;
+    protected $min;
+    protected $max;
 
     public function __construct(?string $name, ?NodeInterface $parent = null, int|float|null $min = null, int|float|null $max = null, string $pathSeparator = BaseNode::DEFAULT_PATH_SEPARATOR)
     {

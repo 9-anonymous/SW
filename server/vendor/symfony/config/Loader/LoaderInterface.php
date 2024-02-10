@@ -21,24 +21,32 @@ interface LoaderInterface
     /**
      * Loads a resource.
      *
+     * @return mixed
+     *
      * @throws \Exception If something went wrong
      */
-    public function load(mixed $resource, ?string $type = null): mixed;
+    public function load(mixed $resource, ?string $type = null);
 
     /**
      * Returns whether this class supports the given resource.
      *
      * @param mixed $resource A resource
+     *
+     * @return bool
      */
-    public function supports(mixed $resource, ?string $type = null): bool;
+    public function supports(mixed $resource, ?string $type = null);
 
     /**
      * Gets the loader resolver.
+     *
+     * @return LoaderResolverInterface
      */
-    public function getResolver(): LoaderResolverInterface;
+    public function getResolver();
 
     /**
      * Sets the loader resolver.
+     *
+     * @return void
      */
-    public function setResolver(LoaderResolverInterface $resolver): void;
+    public function setResolver(LoaderResolverInterface $resolver);
 }

@@ -46,7 +46,10 @@ class EnumNode extends ScalarNode
         $this->values = $values;
     }
 
-    public function getValues(): array
+    /**
+     * @return array
+     */
+    public function getValues()
     {
         return $this->values;
     }
@@ -65,7 +68,10 @@ class EnumNode extends ScalarNode
         }, $this->values)));
     }
 
-    protected function validateType(mixed $value): void
+    /**
+     * @return void
+     */
+    protected function validateType(mixed $value)
     {
         if ($value instanceof \UnitEnum) {
             return;

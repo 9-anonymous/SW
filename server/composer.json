@@ -11,14 +11,15 @@
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.0",
         "nelmio/cors-bundle": "^2.4",
-        "symfony/console": "7.0.*",
-        "symfony/dotenv": "7.0.*",
+        "symfony/console": "*",
+        "symfony/dotenv": "*",
         "symfony/flex": "^2",
-        "symfony/framework-bundle": "7.0.*",
-        "symfony/password-hasher": "7.0.*",
-        "symfony/runtime": "7.0.*",
-        "symfony/security-http": "7.0.*",
-        "symfony/yaml": "7.0.*"
+        "symfony/framework-bundle": "*",
+        "symfony/password-hasher": "*",
+        "symfony/runtime": "*",
+        "symfony/security-http": "*",
+        "symfony/yaml": "*",
+        "lexik/jwt-authentication-bundle": "^2.14"
     },
     "config": {
         "allow-plugins": {
@@ -65,8 +66,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
-            "require": "7.0.*"
+            "allow-contrib": false
         }
     },
     "require-dev": {

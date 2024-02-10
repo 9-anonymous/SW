@@ -173,8 +173,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      *
      * If you are not using the loaders and therefore don't want
      * to depend on the Config component, set this flag to false.
+     *
+     * @return void
      */
-    public function setResourceTracking(bool $track): void
+    public function setResourceTracking(bool $track)
     {
         $this->trackResources = $track;
     }
@@ -189,13 +191,18 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
 
     /**
      * Sets the instantiator to be used when fetching proxies.
+     *
+     * @return void
      */
-    public function setProxyInstantiator(InstantiatorInterface $proxyInstantiator): void
+    public function setProxyInstantiator(InstantiatorInterface $proxyInstantiator)
     {
         $this->proxyInstantiator = $proxyInstantiator;
     }
 
-    public function registerExtension(ExtensionInterface $extension): void
+    /**
+     * @return void
+     */
+    public function registerExtension(ExtensionInterface $extension)
     {
         $this->extensions[$extension->getAlias()] = $extension;
 
@@ -473,9 +480,11 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
     /**
      * Sets a service.
      *
+     * @return void
+     *
      * @throws BadMethodCallException When this ContainerBuilder is compiled
      */
-    public function set(string $id, ?object $service): void
+    public function set(string $id, ?object $service)
     {
         if ($this->isCompiled() && (isset($this->definitions[$id]) && !$this->definitions[$id]->isSynthetic())) {
             // setting a synthetic service on a compiled container is alright
@@ -489,8 +498,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
 
     /**
      * Removes a service definition.
+     *
+     * @return void
      */
-    public function removeDefinition(string $id): void
+    public function removeDefinition(string $id)
     {
         if (isset($this->definitions[$id])) {
             unset($this->definitions[$id]);
@@ -598,9 +609,11 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * parameter, the value will still be 'bar' as defined in the ContainerBuilder
      * constructor.
      *
+     * @return void
+     *
      * @throws BadMethodCallException When this ContainerBuilder is compiled
      */
-    public function merge(self $container): void
+    public function merge(self $container)
     {
         if ($this->isCompiled()) {
             throw new BadMethodCallException('Cannot merge on a compiled container.');
@@ -689,8 +702,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * Prepends a config array to the configs of the given extension.
      *
      * @param array<string, mixed> $config
+     *
+     * @return void
      */
-    public function prependExtensionConfig(string $name, array $config): void
+    public function prependExtensionConfig(string $name, array $config)
     {
         if (!isset($this->extensionConfigs[$name])) {
             $this->extensionConfigs[$name] = [];
@@ -731,8 +746,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      *                                     env vars or be replaced by uniquely identifiable placeholders.
      *                                     Set to "true" when you want to use the current ContainerBuilder
      *                                     directly, keep to "false" when the container is dumped instead.
+     *
+     * @return void
      */
-    public function compile(bool $resolveEnvPlaceholders = false): void
+    public function compile(bool $resolveEnvPlaceholders = false)
     {
         $compiler = $this->getCompiler();
 
@@ -793,8 +810,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * Adds the service aliases.
      *
      * @param array<string, string|Alias> $aliases
+     *
+     * @return void
      */
-    public function addAliases(array $aliases): void
+    public function addAliases(array $aliases)
     {
         foreach ($aliases as $alias => $id) {
             $this->setAlias($alias, $id);
@@ -805,8 +824,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * Sets the service aliases.
      *
      * @param array<string, string|Alias> $aliases
+     *
+     * @return void
      */
-    public function setAliases(array $aliases): void
+    public function setAliases(array $aliases)
     {
         $this->aliasDefinitions = [];
         $this->addAliases($aliases);
@@ -837,7 +858,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
         return $this->aliasDefinitions[$alias] = $id;
     }
 
-    public function removeAlias(string $alias): void
+    /**
+     * @return void
+     */
+    public function removeAlias(string $alias)
     {
         if (isset($this->aliasDefinitions[$alias])) {
             unset($this->aliasDefinitions[$alias]);
@@ -896,8 +920,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * Adds the service definitions.
      *
      * @param array<string, Definition> $definitions
+     *
+     * @return void
      */
-    public function addDefinitions(array $definitions): void
+    public function addDefinitions(array $definitions)
     {
         foreach ($definitions as $id => $definition) {
             $this->setDefinition($id, $definition);
@@ -908,8 +934,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * Sets the service definitions.
      *
      * @param array<string, Definition> $definitions
+     *
+     * @return void
      */
-    public function setDefinitions(array $definitions): void
+    public function setDefinitions(array $definitions)
     {
         $this->definitions = [];
         $this->addDefinitions($definitions);
@@ -1298,7 +1326,10 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
         return array_values(array_diff($this->findTags(), $this->usedTags));
     }
 
-    public function addExpressionLanguageProvider(ExpressionFunctionProviderInterface $provider): void
+    /**
+     * @return void
+     */
+    public function addExpressionLanguageProvider(ExpressionFunctionProviderInterface $provider)
     {
         $this->expressionLanguageProviders[] = $provider;
     }
