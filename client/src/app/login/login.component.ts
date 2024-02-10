@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.user).subscribe(
       (res) => {
         console.log('Login success!', res);
+        console.log('Your token is: ', res.token);  
+
         this.authService.login(this.user.username, this.user.password);
         this.router.navigate(['/']);
       },

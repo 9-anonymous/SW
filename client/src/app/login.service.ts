@@ -2,10 +2,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError,map, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
-
-@Injectable({
+ @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
@@ -15,9 +14,9 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, user).pipe(
-      catchError((error) => {
-        // Set the error message based on the server response
+    return this.http.post(`${this.apiUrl}/login`, user, { observe: 'response' }).pipe(
+      tap(response => localStorage.setItem('token', response.headers.get('Authorization') ?? '')),        map(response => response.body),
+        catchError((error) => {        // Set the error message based on the server response
         this.errorSubject.next(error.error?.message || 'An unknown error occurred');
         return throwError(error);
       })

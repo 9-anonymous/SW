@@ -1,5 +1,5 @@
 <?php
-//token todo
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,28 +8,32 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
- class LoginController extends AbstractController
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+
+class LoginController extends AbstractController
 {
     #[Route('/login', name: 'app_login', methods: ['POST'])]
-    public function login(Request $request, ManagerRegistry $doctrine): JsonResponse
+    public function login(Request $request, ManagerRegistry $doctrine, JWTTokenManagerInterface $JWTManager): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
 
+        /** @var User $user */
         $user = $doctrine->getRepository(User::class)->findOneBy(['username' => $data['username']]);
 
         if (!$user) {
-            return new JsonResponse(['message' => 'Username not found'], 401);
+            return new JsonResponse(['message' => 'Username not found'],  401);
         }
 
         if ($user->getPassword() !== $data['password']) {
-            return new JsonResponse(['message' => 'Incorrect password'], 401);
+            return new JsonResponse(['message' => 'Incorrect password'],  401);
         }
 
-        // Implement any additional logic (e.g., setting up a token, session)
+        // Generate the JWT Token
+        $token = $JWTManager->create($user);
 
-        return new JsonResponse(['message' => 'Login successful']);
+        return new JsonResponse(['token' => $token]);
     }
- 
+
     #[Route('/logout', name: 'app_logout', methods: ['POST'])]
     public function logout(): void
     {
