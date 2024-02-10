@@ -1,0 +1,44 @@
+#Side{
+    margin: 0px;
+    min-height: 97.25vh
+}
+#MainLogo{
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    margin: 5px auto 10px auto;
+    border-bottom: solid 2px #98c1d9;   
+    text-decoration: none;
+    color: white;
+}
+i{
+    font-size: 20px;
+}
+img{
+    margin: auto;
+}
+ul{
+    list-style-type: none;
+    margin: 50px auto 20px auto;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+    padding: 20px auto 20px auto;
+    display: grid;
+    color:white;
+    border-radius: 30px;
+}
+li{
+    text-align: center;
+    border: #98c1d9 1px solid;
+    border-radius: 30px;
+    margin: 20px auto 10px auto;
+}
+
+a:hover{
+    background-color: #98c1d9;
+    color: black;
+    box-shadow: 3px 3px 20px rgba(152, 193, 217, 0.8); /* Shadow effect */
+
+}

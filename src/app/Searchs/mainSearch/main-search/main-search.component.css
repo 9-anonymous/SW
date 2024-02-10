@@ -1,0 +1,93 @@
+/*TheShow*/
+#theShow{
+    display: Grid;
+    margin: 20px;
+}
+h4{
+    margin: 40px auto 30px auto;
+    text-align: center;
+}
+.SoloCard{
+    box-shadow: 1px 4px 20px rgba(152, 193, 217, 1); /* Shadow effect */
+    margin: 0px 20px 0px 30px;
+    max-width: 15rem; min-width: 15rem;
+    max-height: 28rem; min-height: 25rem;
+}
+
+.BTNG{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0px 10px 0px;
+}
+/**/
+#SearchPage{
+    background-color: black;
+    width: 100vw;
+    margin: auto; 
+    height: 100vh;
+    font-size: 14px;
+}
+.Parts{
+    color: azure;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px rgba(152, 193, 217, 0.8); /* Shadow effect */
+    border: 3px solid transparent;
+    margin: 10px auto 5px auto
+}
+#Contain{
+    padding: 20px 20px 10px 50px;
+}
+#SearchArea{
+    background-color: black;
+    color: white;
+    min-height: 80vh;
+}
+select{
+    text-align: center;
+    color: white;
+    width: 10vw;
+    height: 4vh;
+    background-color: transparent;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 1px 1px 20px rgba(152, 193, 217, 0.8); /* Shadow effect */
+
+}
+h5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+}
+label{
+    text-align: center;
+}
+.searchsA{
+    display: grid;
+}
+#SearchsContainer{
+    background-color: black;       
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 20px 20px 20px;   
+    box-shadow: 3px 3px 20px rgba(152, 193, 217, 0.8); /* Shadow effect */
+    border-radius: 30px;
+    color: white;
+}
+
+#SearchButton{
+    background-color: transparent;
+    border-radius: 20px;
+    border: solid 2px white;
+    width: 10vw;
+}
+
+#SearchButton:hover{
+    box-shadow: 3px 3px 40px rgba(152, 193, 217, 0.8); /* Shadow effect */
+    color:  rgba(152, 193, 217, 0.8);
+    border: double 1px rgba(152, 193, 217, 0.8);
+}
+
+
+  

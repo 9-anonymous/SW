@@ -1,0 +1,170 @@
+<div id="SearchPage" class="row">
+    <div class="Parts col-1">
+      <app-side-nav></app-side-nav> 
+    </div>    
+    
+    <div id="SearchArea" class="Parts col-10">
+      <div id="Contain">
+
+        <form id="SearchsContainer">
+          
+          <h5>Your Dream Car</h5>
+
+          <div class="searchsA" >
+            <label for="Mark">Mark:</label>
+          <select id="Mark" [(ngModel)]="selectedMark">
+            <option value="">Select Mark</option>
+            <option *ngFor="let mark of marks" [value]="mark">{{ mark }}</option>
+          </select>
+          </div> 
+<!---->
+<div class="searchsA">
+  <label for="Model">Model:</label>
+  <select id="Model" [(ngModel)]="selectedModel">
+    <option value="">Select Model</option>
+    <option *ngFor="let model of models" [value]="model">{{ model }}</option>
+  </select>
+</div>
+
+          <div class="searchsA">
+            <!-- third dropdown for models -->
+            <div style="display: flex; justify-content: space-around;">
+              <label for="priceRange">Price (Max) :</label>
+              <span>{{ priceRangeValue }} DTN</span>
+            </div>
+            <input type="range" id="priceRange" name="price" min="3000" max="200000" value="3000" (input)="updatePriceRange($event)">
+            
+            <!-- third Prime dropdown for models -->
+            <div style="display: flex; justify-content: space-around;">
+              <label for="priceRange2">Price (Min) :</label>
+              <span>{{ priceRangeValue2 }} DTN</span>
+            </div>
+            <input type="range" id="priceRange2" name="price2" min="3000" max="200000" value="3000" (input)="updatePriceRange2($event)">
+            
+
+          </div>
+
+          <button class="btn btn-primary" id="SearchButton">
+            Search
+          </button>
+
+        </form>
+
+        <h4>Results:</h4>
+
+        <div id="theShow"class="">
+            <div style="overflow-x: auto;width: auto; display:flex; justify-content: space-around;" id="ShowList">
+              <!--First-->
+              <div class="SoloCard card bg-light mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <img class="card-img-top" width="200px" height="auto" src="https://imgs.search.brave.com/D4ALh1XPFs9m2bd3UtM_l1a4NXJdXhSM8YNVdrCFs9o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wbGF0/Zm9ybS5jc3RhdGlj/LWltYWdlcy5jb20v/eHhsYXJnZS9pbi92/Mi82OTgyYmU4MS1k/N2Q1LTU5YjgtODM1/My00M2IwNTViYTM3/YmIvN2E2Zjg3YWIt/NDEyMC00NTNmLWFh/MTktYzczNTMwYTkw/ODA1L2lpMXpyWGRa/QXlReGZ1VGJtdFNu/SFdOc3dBYy5qcGc" alt="Card image cap">
+                  <h5 class="card-title">Light card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="BTNG">
+                  <button class="btn btn-success" >Buy</button>
+                  <button class="btn btn-info">Info</button>
+                  <button class="btn btn-dark">Contact</button>
+                </div>
+              </div><!--First-->
+              <div class="SoloCard card bg-light mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <img class="card-img-top" width="200px" height="auto" src="https://imgs.search.brave.com/D4ALh1XPFs9m2bd3UtM_l1a4NXJdXhSM8YNVdrCFs9o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wbGF0/Zm9ybS5jc3RhdGlj/LWltYWdlcy5jb20v/eHhsYXJnZS9pbi92/Mi82OTgyYmU4MS1k/N2Q1LTU5YjgtODM1/My00M2IwNTViYTM3/YmIvN2E2Zjg3YWIt/NDEyMC00NTNmLWFh/MTktYzczNTMwYTkw/ODA1L2lpMXpyWGRa/QXlReGZ1VGJtdFNu/SFdOc3dBYy5qcGc" alt="Card image cap">
+                  <h5 class="card-title">Light card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="BTNG">
+                  <button class="btn btn-success" >Buy</button>
+                  <button class="btn btn-info">Info</button>
+                  <button class="btn btn-dark">Contact</button>
+                </div>
+              </div><!--First-->
+              <div class="SoloCard card bg-light mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <img class="card-img-top" width="200px" height="auto" src="https://imgs.search.brave.com/D4ALh1XPFs9m2bd3UtM_l1a4NXJdXhSM8YNVdrCFs9o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wbGF0/Zm9ybS5jc3RhdGlj/LWltYWdlcy5jb20v/eHhsYXJnZS9pbi92/Mi82OTgyYmU4MS1k/N2Q1LTU5YjgtODM1/My00M2IwNTViYTM3/YmIvN2E2Zjg3YWIt/NDEyMC00NTNmLWFh/MTktYzczNTMwYTkw/ODA1L2lpMXpyWGRa/QXlReGZ1VGJtdFNu/SFdOc3dBYy5qcGc" alt="Card image cap">
+                  <h5 class="card-title">Light card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="BTNG">
+                  <button class="btn btn-success" >Buy</button>
+                  <button class="btn btn-info">Info</button>
+                  <button class="btn btn-dark">Contact</button>
+                </div>
+              </div><!--First-->
+              <div class="SoloCard card bg-light mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <img class="card-img-top" width="200px" height="auto" src="https://imgs.search.brave.com/D4ALh1XPFs9m2bd3UtM_l1a4NXJdXhSM8YNVdrCFs9o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wbGF0/Zm9ybS5jc3RhdGlj/LWltYWdlcy5jb20v/eHhsYXJnZS9pbi92/Mi82OTgyYmU4MS1k/N2Q1LTU5YjgtODM1/My00M2IwNTViYTM3/YmIvN2E2Zjg3YWIt/NDEyMC00NTNmLWFh/MTktYzczNTMwYTkw/ODA1L2lpMXpyWGRa/QXlReGZ1VGJtdFNu/SFdOc3dBYy5qcGc" alt="Card image cap">
+                  <h5 class="card-title">Light card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="BTNG">
+                  <button class="btn btn-success" >Buy</button>
+                  <button class="btn btn-info">Info</button>
+                  <button class="btn btn-dark">Contact</button>
+                </div>
+              </div>
+              
+              
+              
+              <!--Second-->
+              <div class="SoloCard card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                  <div class="card-body">
+                    <img class="card-img-top" width="200px" height="auto" src="..." alt="Card image cap">
+                    <h5 class="card-title">Light card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                  <div class="BTNG">
+                    <button>Buy</button>
+                    <button>Info</button>
+                    <button>Contact</button>
+                  </div>
+              </div>
+              <!--third-->
+              <div class="SoloCard card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                  <div class="card-body">
+                    <img class="card-img-top" width="200px" height="auto" src="..." alt="Card image cap">
+                    <h5 class="card-title">Light card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                  <div class="BTNG">
+                    <button>Buy</button>
+                    <button>Info</button>
+                    <button>Contact</button>
+                  </div>
+              </div>
+              <!--4rth-->
+              <div class="SoloCard card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                  <div class="card-body">
+                    <img class="card-img-top" width="200px" height="auto" src="..." alt="Card image cap">
+                    <h5 class="card-title">Light card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                  <div class="BTNG">
+                    <button>Buy</button>
+                    <button>Info</button>
+                    <button>Contact</button>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+        <!--News-->
+        <h4>New Cars</h4>
+        <div class="card bg-dark text-white">
+          <img class="card-img" src="..." alt="Card image">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text">Last updated 3 mins ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
