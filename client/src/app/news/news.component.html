@@ -1,0 +1,13 @@
+<!-- news.component.html -->
+
+<div *ngFor="let article of totalDisplayedNews">
+    <div class="news-item">
+      <img *ngIf="article.urlToImage" [src]="article.urlToImage" alt="News Image" class="news-image">
+      <div class="news-content">
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.description }}</p>
+        <a [href]="article.url" target="_blank">Read More</a>
+      </div>
+    </div>
+  </div>
+  

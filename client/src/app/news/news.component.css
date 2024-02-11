@@ -1,0 +1,40 @@
+/* news.component.css */
+
+/* Add styles for news items */
+.news-item {
+    display: flex;
+    background-color: #292929;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Add styles for news image */
+  .news-image {
+    width: 300px; /* Adjust the width as needed */
+    height: auto;
+    margin-right: 15px;
+    border-radius: 4px;
+  }
+  
+  /* Article styles */
+  .news-content {
+    flex-grow: 1;
+  }
+  
+  h3 {
+    color: #64b5f6;
+  }
+  
+  p {
+    color: #bdbdbd;
+  }
+  
+  a {
+    color: #90caf9;
+  }
+  
+  a:hover {
+    color: #64b5f6;
+  }
+  

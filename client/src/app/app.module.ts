@@ -13,6 +13,7 @@ import { WelcomePageComponent } from './MainPage/welcome-page/welcome-page.compo
 import { BenefitsComponent } from './MainPage/benefits/benefits.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { NewsComponent } from './news/news.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SignupComponent } from './signup/signup.component';
     WelcomePageComponent,
     BenefitsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
