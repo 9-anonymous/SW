@@ -1,7 +1,9 @@
+// app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,7 @@ import { BenefitsComponent } from './MainPage/benefits/benefits.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NewsComponent } from './news/news.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +29,14 @@ import { NewsComponent } from './news/news.component';
     BenefitsComponent,
     LoginComponent,
     SignupComponent,
-    NewsComponent
+    NewsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule, // Add ReactiveFormsModule here
     AppRoutingModule
   ],
   providers: [],

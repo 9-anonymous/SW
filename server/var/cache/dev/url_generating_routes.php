@@ -7,9 +7,11 @@ return [
     'app_accueil' => [[], ['_controller' => 'App\\Controller\\AppController::index'], [], [['text', '/']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],
+    'api_send-email' => [[], ['_controller' => 'App\\Controller\\MailController::sendEmail'], [], [['text', '/send-email']], [], [], []],
     'api_register' => [[], ['_controller' => 'App\\Controller\\SignupController::register'], [], [['text', '/register']], [], [], []],
     'App\Controller\AppController::index' => [[], ['_controller' => 'App\\Controller\\AppController::index'], [], [['text', '/']], [], [], []],
     'App\Controller\LoginController::login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'App\Controller\LoginController::logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],
+    'App\Controller\MailController::sendEmail' => [[], ['_controller' => 'App\\Controller\\MailController::sendEmail'], [], [['text', '/send-email']], [], [], []],
     'App\Controller\SignupController::register' => [[], ['_controller' => 'App\\Controller\\SignupController::register'], [], [['text', '/register']], [], [], []],
 ];
