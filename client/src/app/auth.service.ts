@@ -7,7 +7,14 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private isAuthenticatedValue = false;
   private usernameValue = '';
+  constructor() {
+    const token = localStorage.getItem('token');
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    const username = localStorage.getItem('username');
 
+    this.isAuthenticatedValue = isAuthenticated === 'true';
+    this.usernameValue = username || '';
+  }
   isAuthenticated(): boolean {
     return this.isAuthenticatedValue;
   }
@@ -23,7 +30,9 @@ export class AuthService {
   }
 
   logout(): void {
-    // Implement logout logic, reset isAuthenticated and username
+    localStorage.removeItem('token');
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('username');
     this.isAuthenticatedValue = false;
     this.usernameValue = '';
   }

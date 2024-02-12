@@ -15,8 +15,12 @@ export class LoginService {
 
   login(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, user, { observe: 'response' }).pipe(
-      tap(response => localStorage.setItem('token', response.headers.get('Authorization') ?? '')),        map(response => response.body),
-        catchError((error) => {        // Set the error message based on the server response
+      tap(response => {
+        localStorage.setItem('token', response.headers.get('Authorization') ?? '');
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('username', user.username);
+      }),
+      catchError((error) => {        // Set the error message based on the server response
         this.errorSubject.next(error.error?.message || 'An unknown error occurred');
         return throwError(error);
       })
