@@ -33,7 +33,7 @@ export class NewsComponent implements OnInit {
 
   fetchCompanyNews(companyName: string): void {
     // Define the keywords that indicate the article is about a product or model
-    const productKeywords = ['model','demand', 'launch', 'product'];
+    const productKeywords = ['model','demand', 'launch', 'product','mark','car','electric','vehicle'];
   
     this.newsService.getCarCompanyNews(companyName).subscribe((data: any) => {
       // Store the original data

@@ -1,14 +1,12 @@
-<!-- src/app/signup/signup.component.html -->
 <h2>Register</h2>
-<form (submit)="onSubmit()" #registrationForm="ngForm">
-  <label for="username">Username:</label>
-  <input type="text" id="username" [(ngModel)]="user.username" name="username" required>
-  
-  <label for="email">Email:</label>
-  <input type="email" id="email" [(ngModel)]="user.email" name="email" required>
-  
-  <label for="password">Password:</label>
-  <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
-  
-  <button type="submit">Register</button>
+<form (submit)="onSubmit()" #registrationForm="ngForm" class="d-flex flex-column">
+ <label for="username" class="form-label">Username:</label>
+ <input type="text" id="username" [(ngModel)]="user.username" name="username" class="form-control" required>
+ 
+ <label for="email" class="form-label">Email:</label>
+ <input type="email" id="email" [(ngModel)]="user.email" name="email" class="form-control" required>
+ 
+ <label for="password" class="form-label">Password:</label>
+ <input type="password" id="password" [(ngModel)]="user.password" name="password" class="form-control" required>
+ <button type="submit" class="btn btn-primary">Register</button>
 </form>
