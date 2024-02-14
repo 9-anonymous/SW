@@ -78,7 +78,7 @@ class PhpExecutableFinder
 
         $dirs = [\PHP_BINDIR];
         if ('\\' === \DIRECTORY_SEPARATOR) {
-            $dirs[] = 'C:\xampp\php\\';
+            $dirs[] = 'C:\wamp64\bin\php\php8.3.0\\';
         }
 
         return $this->executableFinder->find('php', false, $dirs);
