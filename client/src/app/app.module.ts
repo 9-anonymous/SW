@@ -16,7 +16,11 @@ import { BenefitsComponent } from './MainPage/benefits/benefits.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NewsComponent } from './news/news.component';
-import { ContactComponent } from './contact/contact.component';
+import { EmailComponent } from './email/email.component';
+import { ContactComponent } from './contactshare/contact/contact.component';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { ContactMessageComponent } from './contact-message/contact-message.component';
+import { ContactInputComponent } from './contact/contact-input/contact-input.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { ContactComponent } from './contact/contact.component';
     LoginComponent,
     SignupComponent,
     NewsComponent,
-    ContactComponent
+    EmailComponent,
+    ContactComponent,
+    ContactListComponent,
+    ContactMessageComponent,
+    ContactInputComponent
   ],
   imports: [
     BrowserModule,

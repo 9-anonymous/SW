@@ -1,4 +1,4 @@
-<form [formGroup]="contactForm" (ngSubmit)="sendEmail()" class="d-flex flex-column">
+<form [formGroup]="emailForm" (ngSubmit)="sendEmail()" class="d-flex flex-column">
     <div class="form-group">
       <label for="email" class="form-label">Gmail Address</label>
       <input type="email" id="email" class="form-control" formControlName="email">
@@ -11,5 +11,5 @@
       <label for="content" class="form-label">Message Content</label>
       <textarea id="content" class="form-control" formControlName="content"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid">Send Email</button>
-</form>
+    <button type="submit" class="btn btn-primary" [disabled]="!emailForm.valid">Send Email</button>
+</form> 

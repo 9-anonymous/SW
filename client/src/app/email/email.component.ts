@@ -1,23 +1,23 @@
 // contact.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ContactService } from '../contact.service'; // Import the service
+import { EmailService } from '../email.service'; // Import the service
 import { Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
-})
-export class ContactComponent implements OnInit {
+  selector: 'app-email',
+  templateUrl: './email.component.html',
+  styleUrls: ['./email.component.css']
+}) 
+export class EmailComponent implements OnInit {
   
-  public contactForm!: FormGroup; // Use the ! operator
+  public emailForm!: FormGroup; // Use the ! operator
 
-  constructor(private router: Router,private fb: FormBuilder, @Inject(ContactService) private contactService: ContactService) {}
+  constructor(private router: Router,private fb: FormBuilder, @Inject(EmailService) private emailService: EmailService) {}
 
   ngOnInit() {
-    this.contactForm = this.fb.group({
+    this.emailForm = this.fb.group({
       email: ['', Validators.required],
       username: ['', Validators.required],
       content: ['', Validators.required]
@@ -25,9 +25,9 @@ export class ContactComponent implements OnInit {
   }
 
   sendEmail() {
-    if (this.contactForm.valid) {
-      const emailData = this.contactForm.value;
-      this.contactService.sendEmail(emailData).subscribe(
+    if (this.emailForm.valid) {
+      const emailData = this.emailForm.value;
+      this.emailService.sendEmail(emailData).subscribe(
         response => {
           // Redirect to the home page on success
           this.router.navigate(['/']);
@@ -39,7 +39,7 @@ export class ContactComponent implements OnInit {
       );
     } else {
       // Optionally, handle form validation errors here
-      console.error('Invalid form data:', this.contactForm.errors);
+      console.error('Invalid form data:', this.emailForm.errors);
     }
   }
 }

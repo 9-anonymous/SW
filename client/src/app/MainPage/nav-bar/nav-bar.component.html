@@ -4,7 +4,7 @@
         <div class="links">
                 <a href=""><i class="bi bi-house-door"></i>&nbsp; HOME</a>
                 <a href=""><i class="bi bi-shop"></i> &nbsp;CARS-SHOP</a>
-                <a routerLink="/contact"><i class="bi bi-telephone"></i> &nbsp;CONTACT-US</a> 
+<a routerLink="/email"><i class="bi bi-envelope"></i> &nbsp;Email</a>                
                 <a routerLink="/news"><i class="bi bi-telephone"></i> &nbsp;News</a>    
    
         </div>
@@ -17,14 +17,15 @@
         
         <div class="links">
             <input placeholder="Search" type="text">
+            <a routerLink="/contact"><i class="bi bi-telephone"></i> &nbsp;CONTACT-US</a> 
             <a href=""><i class="bi bi-cart"></i> &nbsp;CART</a>    
             <ng-container *ngIf="!authService.isAuthenticated(); else loggedInTemplate">
               <a routerLink="/register"><i class="bi bi-person"></i>&nbsp;Sign Up</a>
               <a routerLink="/login"><i class="bi bi-door-open"></i>&nbsp;Login</a>
             </ng-container>
             <ng-template #loggedInTemplate>
-              <a (click)="logout()"><i class="bi bi-box-arrow-right"></i>&nbsp;Logout</a>
-              <span>{{ authService.getUsername() }}</span>
+              <a href="" (click)="logout()"><i class="bi bi-box-arrow-right"></i>&nbsp;Logout</a>
+              <a href="">{{ authService.getUsername() }}</a>
             </ng-template>
  
         </div>
