@@ -1,6 +1,8 @@
 <?php
 namespace App\Entity;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -12,6 +14,14 @@ class User implements UserInterface
     #[ORM\Column(length: 255)] private ?string $username = null;
     #[ORM\Column(length: 255)] private ?string $email = null;
     #[ORM\Column(length: 255)] private ?string $password = null;
+
+    #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'sender', orphanRemoval: true)]
+    private Collection $messages;
+    
+    public function __construct()
+    {
+        $this->messages = new ArrayCollection();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -70,5 +80,35 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Message>
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): static
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages->add($message);
+            $message->setSender($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): static
+    {
+        if ($this->messages->removeElement($message)) {
+            // set the owning side to null (unless already changed)
+            if ($message->getSender() === $this) {
+                $message->setSender(null);
+            }
+        }
+
+        return $this;
     }
 }

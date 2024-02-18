@@ -1,1 +1,8 @@
-<p>contact-list works!</p>
+<div>
+    <h2>Your Messages</h2>
+    <ul>
+      <li *ngFor="let message of messages">
+        <a [routerLink]="'/contact/message/' + message.id">{{ message.title }}</a>
+          </li>
+    </ul>
+  </div>

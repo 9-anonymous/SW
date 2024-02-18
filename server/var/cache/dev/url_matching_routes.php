@@ -12,7 +12,9 @@ return [
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::login'], null, ['POST' => 0], null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\LoginController::logout'], null, ['POST' => 0], null, false, false, null]],
         '/send-email' => [[['_route' => 'api_send-email', '_controller' => 'App\\Controller\\MailController::sendEmail'], null, ['POST' => 0], null, false, false, null]],
+        '/messages' => [[['_route' => 'app_messages', '_controller' => 'App\\Controller\\MessageController::sendMessage'], null, ['POST' => 0], null, false, false, null]],
         '/register' => [[['_route' => 'api_register', '_controller' => 'App\\Controller\\SignupController::register'], null, ['POST' => 0], null, false, false, null]],
+        '/users' => [[['_route' => 'app_user', '_controller' => 'App\\Controller\\UserController::listUsers'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

@@ -22,13 +22,17 @@ export class AuthService {
   getUsername(): string {
     return this.usernameValue;
   }
-
+  getUserId(): string | null {
+    return localStorage.getItem('userId');
+  }
   login(username: string, password: string): void {
     // Implement login logic, set isAuthenticated and username
     this.isAuthenticatedValue = true;
     this.usernameValue = username;
   }
-
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('isAuthenticated');

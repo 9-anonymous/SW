@@ -17,8 +17,13 @@
         
         <div class="links">
             <input placeholder="Search" type="text">
-            <a routerLink="/contact"><i class="bi bi-telephone"></i> &nbsp;CONTACT-US</a> 
-            <a href=""><i class="bi bi-cart"></i> &nbsp;CART</a>    
+            <div class="dropdown">
+              <button class="dropbtn">Contact</button>
+              <div class="dropdown-content">
+                <a routerLink="/contactinput">Create</a>
+                <a routerLink="/contactlist">List</a>
+              </div>
+            </div>            <a href=""><i class="bi bi-cart"></i> &nbsp;CART</a>    
             <ng-container *ngIf="!authService.isAuthenticated(); else loggedInTemplate">
               <a routerLink="/register"><i class="bi bi-person"></i>&nbsp;Sign Up</a>
               <a routerLink="/login"><i class="bi bi-door-open"></i>&nbsp;Login</a>

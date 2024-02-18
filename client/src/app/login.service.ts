@@ -19,6 +19,8 @@ export class LoginService {
         localStorage.setItem('token', response.headers.get('Authorization') ?? '');
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('username', user.username);
+        localStorage.setItem('userId', user.id); // Assuming the response body contains the user ID
+
       }),
       catchError((error) => {        // Set the error message based on the server response
         this.errorSubject.next(error.error?.message || 'An unknown error occurred');
