@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class MessageController extends AbstractController
 {
@@ -84,12 +85,12 @@ class MessageController extends AbstractController
     }
 
     #[Route('/messages', name: 'app_messages', methods: ['POST'])]
-    public function sendMessage(ManagerRegistry $doctrine, Request $request, UserRepository $userRepository): JsonResponse
+    public function sendMessage(ManagerRegistry $doctrine, Request $request, UserRepository $userRepository, SessionInterface $session): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
 
         // Validate and get sender ID from client-side
-        $loggedInUserId = 1;
+        $loggedInUserId = $session->get('user_id');
 
         if (!$loggedInUserId) {
             return new JsonResponse(['error' => 'Sender ID not provided'], Response::HTTP_BAD_REQUEST);

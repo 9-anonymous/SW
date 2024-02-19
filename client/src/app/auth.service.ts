@@ -7,11 +7,16 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private isAuthenticatedValue = false;
   private usernameValue = '';
+  private userIdValue: string = ''; // declare userIdValue property
+
   constructor() {
     const token = localStorage.getItem('token');
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     const username = localStorage.getItem('username');
-
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.userIdValue = userId;
+    }
     this.isAuthenticatedValue = isAuthenticated === 'true';
     this.usernameValue = username || '';
   }
@@ -23,7 +28,7 @@ export class AuthService {
     return this.usernameValue;
   }
   getUserId(): string | null {
-    return localStorage.getItem('userId');
+    return this.userIdValue;
   }
   login(username: string, password: string): void {
     // Implement login logic, set isAuthenticated and username

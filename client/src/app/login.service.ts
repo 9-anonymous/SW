@@ -4,6 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError,map, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+interface LoginResponse {
+  userId: string;
+  // other properties if applicable
+}
  @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +23,12 @@ export class LoginService {
         localStorage.setItem('token', response.headers.get('Authorization') ?? '');
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('username', user.username);
-        localStorage.setItem('userId', user.id); // Assuming the response body contains the user ID
+        console.log('username:', user.username);
+        const userId = (response.body as LoginResponse)?.userId;        // Store the user ID in local storage
+        localStorage.setItem('userId', userId);
+
+        // Log the user ID to the console
+        console.log('User ID:', userId);
 
       }),
       catchError((error) => {        // Set the error message based on the server response

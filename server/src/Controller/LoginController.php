@@ -8,12 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 
 class LoginController extends AbstractController
 {
     #[Route('/login', name: 'app_login', methods: ['POST'])]
-    public function login(Request $request, ManagerRegistry $doctrine, JWTTokenManagerInterface $JWTManager): JsonResponse
+    public function login(Request $request, ManagerRegistry $doctrine, JWTTokenManagerInterface $JWTManager, SessionInterface $session): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
 
@@ -30,9 +32,12 @@ class LoginController extends AbstractController
 
         // Generate the JWT Token
         $token = $JWTManager->create($user);
+        $session->set('user_id', $user->getId());
 
-        return new JsonResponse(['token' => $token]);
-    }
+        return new JsonResponse([
+            'token' => $token,
+            'userId' => $user->getId(), // Add the user ID to the response
+        ]);    }
 
     #[Route('/logout', name: 'app_logout', methods: ['POST'])]
     public function logout(): void

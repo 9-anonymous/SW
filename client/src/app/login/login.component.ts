@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.user).subscribe(
       (res) => {
         console.log('Login success!', res);
-        console.log('Your token is: ', res.token);  
+        console.log('Your token is: ', res.body.token); // Access the token from the response body
+        const userId = this.authService.getUserId();
+        console.log('User ID from AuthService:', userId);
 
         this.authService.login(this.user.username, this.user.password);
         this.router.navigate(['/']);
