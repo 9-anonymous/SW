@@ -85,12 +85,12 @@ class MessageController extends AbstractController
     }
 
     #[Route('/messages', name: 'app_messages', methods: ['POST'])]
-    public function sendMessage(ManagerRegistry $doctrine, Request $request, UserRepository $userRepository, SessionInterface $session): JsonResponse
+    public function sendMessage(ManagerRegistry $doctrine, Request $request, UserRepository $userRepository): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
-
-        // Validate and get sender ID from client-side
-        $loggedInUserId = $session->get('user_id');
+    
+        // Ensure the sender ID is being received correctly
+        $loggedInUserId = $data['sender_id'];
 
         if (!$loggedInUserId) {
             return new JsonResponse(['error' => 'Sender ID not provided'], Response::HTTP_BAD_REQUEST);
