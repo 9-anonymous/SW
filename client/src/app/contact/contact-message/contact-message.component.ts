@@ -22,7 +22,7 @@ export class ContactMessageComponent implements OnInit {
       // handle messageId as a string
       this.messageService.getMessageById(Number(messageId)).subscribe(message => {
         this.message = message;
-
+  
         // Check if sender exists before accessing properties
         if (this.message && this.message.sender) {
           console.log('Sender Username:', this.message.sender.username);
@@ -31,5 +31,4 @@ export class ContactMessageComponent implements OnInit {
         }
       });
     }
-  }
-}
+  }}

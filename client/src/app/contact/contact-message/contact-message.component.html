@@ -1,5 +1,8 @@
-<div *ngIf="message">
-  <h2>{{ message.title }}</h2>
-  <p>From: {{ message.sender.username }}</p>
-  <p>{{ message.content }}</p>
+<div *ngIf="message" class="jumbotron jumbotron-fluid" style="background-color: #f8f9fa; padding: 2rem 2rem;">
+  <div class="container">
+    <h1 class="display-3" style="color: #007bff;">{{ message.title }}</h1>
+    <p class="lead">From: {{ message.sender.username }}</p>
+    <hr class="my-4" style="border-color: #007bff;">
+    <p style="font-size: 1.25rem;">{{ message.content }}</p>
+  </div>
 </div>

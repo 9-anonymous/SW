@@ -15,12 +15,12 @@ export class MessageService {
     return this.http.get<string[]>('http://localhost:8000/users');
   }
   getMessagesForUser(receiverUsername: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:8000/messages/${receiverUsername}`);
+    return this.http.get<any[]>(`http://localhost:8000/messages/user/${receiverUsername}`);
   }
 
 // message.service.ts
 getMessageById(id: number): Observable<any> {
-  return this.http.get<any>(`http://localhost:8000/messages/${id}`);
+  return this.http.get<any>(`http://localhost:8000/messages/id/${id}`);
 }
 
   sendMessage(title: string, content: string, receiver: string): Observable<any> {

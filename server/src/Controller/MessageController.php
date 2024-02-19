@@ -24,11 +24,38 @@ class MessageController extends AbstractController
         $this->logger = $logger;
     }
  
-  
+    #[Route('/messages/id/{id}', name: 'app_message_by_id', methods: ['GET'])]
+    public function getMessageById(MessageRepository $messageRepository, int $id): JsonResponse
+    {
+
+       $id = (int) $id; // Convert $id to integer
+
+        $message = $messageRepository->find($id);
     
-    #[Route('/messages/{receiverUsername}', name: 'app_messages_received', methods: ['GET'])]
+        if (!$message) {
+            return new JsonResponse(['error' => 'Message not found'], Response::HTTP_NOT_FOUND);
+        }
+    
+        // Convert the message to an array format suitable for JSON response
+        $messageArray = [
+            'id' => $message->getId(),
+            'title' => $message->getTitle(),
+            'content' => $message->getContent(),
+            'sender' => [
+                'username' => $message->getSender()->getUsername(),
+            ],
+            'receiver' => [
+                'username' => $message->getReceiver()->getUsername(),
+            ],
+        ];
+    
+        return new JsonResponse($messageArray);
+    }
+    
+    
+    #[Route('/messages/user/{receiverUsername}', name: 'app_messages_received', methods: ['GET'])]
     public function getMessagesForUser(UserRepository $userRepository, MessageRepository $messageRepository, string $receiverUsername): JsonResponse
-    {    $this->logger->info('Receiver Username: ' . $receiverUsername);
+    {   $this->logger->info('Receiver Username: ' . $receiverUsername);
 
         // Find the receiver user by username
         $receiver = $userRepository->findOneBy(['username' => $receiverUsername]);
@@ -96,31 +123,6 @@ class MessageController extends AbstractController
         }
 
         return new JsonResponse(['message' => 'Message sent successfully']);
-    }
-    #[Route('/messages/{id}', name: 'app_message', methods: ['GET'])]
-    public function getMessageById(MessageRepository $messageRepository, int $id): JsonResponse
-    {    $id = (int) $id; // Convert $id to integer
-
-        $message = $messageRepository->find($id);
-    
-        if (!$message) {
-            return new JsonResponse(['error' => 'Message not found'], Response::HTTP_NOT_FOUND);
-        }
-    
-        // Convert the message to an array format suitable for JSON response
-        $messageArray = [
-            'id' => $message->getId(),
-            'title' => $message->getTitle(),
-            'content' => $message->getContent(),
-            'sender' => [
-                'username' => $message->getSender()->getUsername(),
-            ],
-            'receiver' => [
-                'username' => $message->getReceiver()->getUsername(),
-            ],
-        ];
-    
-        return new JsonResponse($messageArray);
     }
     
 }
