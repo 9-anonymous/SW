@@ -1,4 +1,4 @@
-// src/app/contact/contact-message/contact-message.component.ts
+// contact-message.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from '../../message.service';
@@ -9,16 +9,26 @@ import { MessageService } from '../../message.service';
   styleUrls: ['./contact-message.component.css']
 })
 export class ContactMessageComponent implements OnInit {
-  message: any = {};
+  message: any;
 
-  constructor(private route: ActivatedRoute, private messageService: MessageService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
     const messageId = this.route.snapshot.paramMap.get('id');
-    
-    if (messageId) {
-      this.messageService.getMessages(messageId).subscribe(response => {
-        this.message = response;
+    if (messageId !== null) {
+      // handle messageId as a string
+      this.messageService.getMessageById(Number(messageId)).subscribe(message => {
+        this.message = message;
+
+        // Check if sender exists before accessing properties
+        if (this.message && this.message.sender) {
+          console.log('Sender Username:', this.message.sender.username);
+        } else {
+          console.log('Sender not found or is null');
+        }
       });
     }
   }

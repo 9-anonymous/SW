@@ -1,8 +1,6 @@
-<div>
-    <h2>Your Messages</h2>
-    <ul>
-      <li *ngFor="let message of messages">
-        <a [routerLink]="'/contact/message/' + message.id">{{ message.title }}</a>
-          </li>
-    </ul>
-  </div>
+<!-- contact-list.component.html -->
+<div *ngFor="let message of messages">
+  <h3>{{ message.title }}</h3>
+  <p>From: {{ message.sender.username }}</p>
+  <button (click)="viewMessage(message.id)">View Message</button>
+</div>

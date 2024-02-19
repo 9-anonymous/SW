@@ -14,11 +14,14 @@ export class MessageService {
   getUsernames(): Observable<string[]> {
     return this.http.get<string[]>('http://localhost:8000/users');
   }
-
-  getMessages(messageId?: string): Observable<any> {
-    const url = messageId ? `${this.apiUrl}/${messageId}` : this.apiUrl;
-    return this.http.get<any>(url);
+  getMessagesForUser(receiverUsername: string): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8000/messages/${receiverUsername}`);
   }
+
+// message.service.ts
+getMessageById(id: number): Observable<any> {
+  return this.http.get<any>(`http://localhost:8000/messages/${id}`);
+}
 
   sendMessage(title: string, content: string, receiver: string): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');

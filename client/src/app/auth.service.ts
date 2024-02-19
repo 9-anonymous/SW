@@ -29,7 +29,10 @@ export class AuthService {
     // Implement login logic, set isAuthenticated and username
     this.isAuthenticatedValue = true;
     this.usernameValue = username;
-  }
+
+    // Additionally, you may want to store the username in localStorage
+    localStorage.setItem('username', this.usernameValue);
+}
   getToken(): string | null {
     return localStorage.getItem('token');
   }

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent },
   { path: 'contactinput', component: ContactInputComponent },
   { path: 'contactlist', component: ContactListComponent },
-  { path: 'contactmessage', component: ContactMessageComponent }
+  { path: 'contact-message/:id', component: ContactMessageComponent }
 
 
 ];

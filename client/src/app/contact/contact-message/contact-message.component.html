@@ -1,17 +1,5 @@
-<!-- src/app/contact/contact-message/contact-message.component.html -->
-<div>
-    <h2>Message Details</h2>
-    <div>
-      <strong>Title:</strong> {{ message.title }}
-    </div>
-    <div>
-      <strong>Content:</strong> {{ message.content }}
-    </div>
-    <div>
-      <strong>Sender:</strong> {{ message.sender }}
-    </div>
-    <div>
-      <strong>Receiver:</strong> {{ message.receiver }}
-    </div>
-  </div>
-  
+<div *ngIf="message">
+  <h2>{{ message.title }}</h2>
+  <p>From: {{ message.sender.username }}</p>
+  <p>{{ message.content }}</p>
+</div>

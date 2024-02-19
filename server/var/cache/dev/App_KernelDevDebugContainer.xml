@@ -306,7 +306,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.e3rliF_"/>
+      <argument type="service" id=".service_locator.m6xE1MT"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1586,7 +1586,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.e3rliF_"/>
+      <argument type="service" id=".service_locator.m6xE1MT"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -3910,11 +3910,24 @@
         <argument key="mailer" type="service_closure" id="mailer.mailer"/>
       </argument>
     </service>
+    <service id=".service_locator.txp4834" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="messageRepository" type="service_closure" id="App\Repository\MessageRepository"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.JDhzbGq" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="doctrine" type="service_closure" id="doctrine"/>
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.sLkGFte" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="messageRepository" type="service_closure" id="App\Repository\MessageRepository"/>
       </argument>
     </service>
     <service id=".service_locator.o6sN0hZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -3923,11 +3936,13 @@
         <argument key="doctrine" type="service_closure" id="doctrine"/>
       </argument>
     </service>
-    <service id=".service_locator.e3rliF_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.m6xE1MT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\LoginController::login" type="service_closure" id=".service_locator.MbNPG0N"/>
         <argument key="App\Controller\MailController::sendEmail" type="service_closure" id=".service_locator.uVvF4gL"/>
+        <argument key="App\Controller\MessageController::getMessageById" type="service_closure" id=".service_locator.sLkGFte"/>
+        <argument key="App\Controller\MessageController::getMessagesForUser" type="service_closure" id=".service_locator.txp4834"/>
         <argument key="App\Controller\MessageController::sendMessage" type="service_closure" id=".service_locator.JDhzbGq"/>
         <argument key="App\Controller\SignupController::register" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\UserController::listUsers" type="service_closure" id=".service_locator.JDhzbGq"/>
@@ -3937,6 +3952,8 @@
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\LoginController:login" type="service_closure" id=".service_locator.MbNPG0N"/>
         <argument key="App\Controller\MailController:sendEmail" type="service_closure" id=".service_locator.uVvF4gL"/>
+        <argument key="App\Controller\MessageController:getMessageById" type="service_closure" id=".service_locator.sLkGFte"/>
+        <argument key="App\Controller\MessageController:getMessagesForUser" type="service_closure" id=".service_locator.txp4834"/>
         <argument key="App\Controller\MessageController:sendMessage" type="service_closure" id=".service_locator.JDhzbGq"/>
         <argument key="App\Controller\SignupController:register" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\UserController:listUsers" type="service_closure" id=".service_locator.JDhzbGq"/>
@@ -5121,12 +5138,13 @@
     <service id="Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface" alias="lexik_jwt_authentication.encoder.lcobucci"/>
     <service id="lexik_jwt_authentication.key_loader" alias="lexik_jwt_authentication.key_loader.raw" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.e3rliF_"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.m6xE1MT"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
     <service id=".service_locator.7nWgg1r" alias=".service_locator.MbNPG0N"/>
-    <service id=".service_locator.jg.ObQJ" alias=".service_locator.e3rliF_"/>
+    <service id=".service_locator.iK3Dxq9" alias=".service_locator.txp4834"/>
+    <service id=".service_locator.ztnzpj1" alias=".service_locator.m6xE1MT"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
@@ -5140,7 +5158,9 @@
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
     <service id=".service_locator.2Bz0W1Y" alias=".service_locator.MbNPG0N"/>
     <service id=".service_locator.OJmnvRJ" alias=".service_locator.uVvF4gL"/>
+    <service id=".service_locator.daFiEra" alias=".service_locator.txp4834"/>
     <service id=".service_locator.on9wXlN" alias=".service_locator.JDhzbGq"/>
+    <service id=".service_locator.22VUVOO" alias=".service_locator.sLkGFte"/>
     <service id=".service_locator.eQ296SW" alias=".service_locator.o6sN0hZ"/>
     <service id=".service_locator.jxnIR8C" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
