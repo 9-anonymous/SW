@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ContactInputComponent {
   title: string = '';
   content: string = '';
+  photoUrl: string = '';
   receiver: string = '';
   usernames: string[] = [];
 
@@ -29,13 +30,16 @@ export class ContactInputComponent {
   }
 
   sendMessage(): void {
-    // Call the updated sendMessage method with the specified parameters
-    this.messageService.sendMessage(this.title, this.content, this.receiver)
+    const messageData = {
+      title: this.title,
+      content: this.content,
+      receiver: this.receiver,
+      photoUrl: this.photoUrl // Include the photo URL if provided
+    };
+    this.messageService.sendMessage(messageData)
       .subscribe(response => {
-        // Handle the response as needed
         console.log(response);
         this.router.navigate(['/']);
-
       });
   }
 

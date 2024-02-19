@@ -41,6 +41,7 @@ class MessageController extends AbstractController
             'id' => $message->getId(),
             'title' => $message->getTitle(),
             'content' => $message->getContent(),
+            'photoUrl' => $message->getPhotoUrl(),
             'sender' => [
                 'username' => $message->getSender()->getUsername(),
             ],
@@ -110,6 +111,7 @@ class MessageController extends AbstractController
         $message = new Message();
         $message->setTitle($data['title']);
         $message->setContent($data['content']);
+        $message->setPhotoUrl($data['photoUrl'] ?? null); // Set the photo URL if provided
         $message->setSender($sender);  // Set the sender as the User entity
         $message->setReceiver($receiver);
 

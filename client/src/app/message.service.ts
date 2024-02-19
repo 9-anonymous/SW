@@ -18,18 +18,14 @@ export class MessageService {
     return this.http.get<any[]>(`http://localhost:8000/messages/user/${receiverUsername}`);
   }
 
-// message.service.ts
-getMessageById(id: number): Observable<any> {
+ getMessageById(id: number): Observable<any> {
   return this.http.get<any>(`http://localhost:8000/messages/id/${id}`);
 }
 
-  sendMessage(title: string, content: string, receiver: string): Observable<any> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-    // Set sender_id manually to 1
-    const senderId = 1;
-
-    const messageData = { title, content, receiver, sender_id: senderId };
-    return this.http.post<any>(this.apiUrl, messageData, { headers });
-  }
+sendMessage(messageData: any): Observable<any> {
+  const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  const senderId =  1; // Set sender_id manually to  1
+  messageData.sender_id = senderId; // Include the sender ID
+  return this.http.post<any>(this.apiUrl, messageData, { headers });
+}
 }

@@ -16,6 +16,9 @@ class Message
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
+    #[ORM\Column(length: 255)]
+
+private ?string $photoUrl = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
@@ -58,7 +61,14 @@ class Message
 
         return $this;
     }
-
+    public function setPhotoUrl(?string $photoUrl): self {
+        $this->photoUrl = $photoUrl;
+        return $this;
+    }
+    
+    public function getPhotoUrl(): ?string {
+        return $this->photoUrl;
+    }
     public function getSender(): ?User
     {
         return $this->sender;

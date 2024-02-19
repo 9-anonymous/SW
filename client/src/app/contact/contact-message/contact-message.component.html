@@ -4,5 +4,8 @@
     <p class="lead">From: {{ message.sender.username }}</p>
     <hr class="my-4" style="border-color: #007bff;">
     <p style="font-size: 1.25rem;">{{ message.content }}</p>
+    <div *ngIf="message.photoUrl" class="photo-container">
+      <img [src]="message.photoUrl" alt="Message Photo">
+    </div>
   </div>
 </div>
