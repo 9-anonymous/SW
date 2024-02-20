@@ -22,13 +22,12 @@ export class MessageService {
   return this.http.get<any>(`http://localhost:8000/messages/id/${id}`);
 }
 
-sendMessage(messageData: any): Observable<any> {
-  const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  const senderId = localStorage.getItem('userId'); // Get the sender ID from local storage
-
-  // Include the sender ID in the message data
-  messageData.sender_id = senderId;
-
-  return this.http.post<any>(this.apiUrl, messageData, { headers });
+sendMessage(formData: FormData): Observable<any> {
+  const senderId = localStorage.getItem('userId') || 'defaultSenderId';
+  (formData as any).set('sender_id', senderId);
+  for (const [key, value] of (formData as any).entries()) {
+    console.log(`${key}: ${value}`);
+  }
+  return this.http.post<any>(this.apiUrl, formData);
 }
 }

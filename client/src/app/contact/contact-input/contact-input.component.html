@@ -11,9 +11,10 @@
         <textarea id="content" [(ngModel)]="content" name="content" class="form-control" required></textarea>
       </div>
   <div class="form-group">
-    <label for="photoUrl">Photo URL (optional):</label>
-    <input type="text" id="photoUrl" [(ngModel)]="photoUrl" name="photoUrl" class="form-control">
+    <label for="photoUrl">Photo (optional):</label>
+    <input type="file" id="photoUrl" (change)="onFileChange($event)" name="photoUrl" class="form-control">
   </div>
+  
   
       <div class="form-group">
         <label for="receiver">Receiver:</label>

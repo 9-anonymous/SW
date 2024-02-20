@@ -15,7 +15,14 @@ export class ContactMessageComponent implements OnInit {
     private route: ActivatedRoute,
     private messageService: MessageService
   ) { }
-
+  getPhotoUrl(): string {
+    // Assuming your Symfony server is running on http://localhost:8000
+    const baseUrl = 'http://localhost:8000/uploads/';
+    
+    // Construct the full URL by appending the filename
+    return this.message && this.message.photoUrl ? baseUrl + this.message.photoUrl : '';
+  }
+  
   ngOnInit(): void {
     const messageId = this.route.snapshot.paramMap.get('id');
     if (messageId !== null) {

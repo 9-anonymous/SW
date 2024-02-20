@@ -19,6 +19,7 @@
         "symfony/framework-bundle": "*",
         "symfony/google-mailer": "*",
         "symfony/mailer": "*",
+        "symfony/monolog-bundle": "^3.10",
         "symfony/password-hasher": "*",
         "symfony/runtime": "*",
         "symfony/security-http": "*",

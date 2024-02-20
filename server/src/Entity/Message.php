@@ -16,9 +16,8 @@ class Message
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
-    #[ORM\Column(length: 255)]
-
-private ?string $photoUrl = null;
+    #[ORM\Column(type: Types::STRING, length:  255, nullable: true)]
+    private ?string $photoUrl = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
