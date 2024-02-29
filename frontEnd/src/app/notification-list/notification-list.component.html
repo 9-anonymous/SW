@@ -1,0 +1,11 @@
+<div (click)="toggleList()" class="bell-icon">
+ <i class="bi bi-bell"></i>
+ <span *ngIf="notifications.length > 0">{{notifications.length}}</span>
+</div>
+<div *ngIf="showList">
+ <ul>
+    <li *ngFor="let notification of notifications" (click)="goToMessage(notification.id)">
+      {{notification.message}}
+    </li>
+ </ul>
+</div>
